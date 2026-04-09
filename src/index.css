@@ -1,0 +1,330 @@
+:root {
+  --bg-color: #111827;
+  --bg-gradient: radial-gradient(circle at top right, #1f2937, #111827 50%);
+  --text-primary: #e0e7ff;
+  --text-secondary: #9ca3af;
+  --accent-color: #6366f1;
+  /* Vibrant Indigo */
+  --accent-glow: rgba(99, 102, 241, 0.4);
+  --accent-alt: #c084fc;
+  /* Soft Violet/Pink */
+
+  --card-bg: rgba(31, 41, 55, 0.4);
+  --card-border: rgba(255, 255, 255, 0.08);
+
+  font-family: 'Montserrat Alternates', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+}
+
+#root {
+  width: 100%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Ambient glow blobs */
+.ambient-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.blob-1 {
+  top: -10%;
+  left: -10%;
+  width: 40vw;
+  height: 40vw;
+  background: var(--accent-color);
+}
+
+.blob-2 {
+  bottom: -10%;
+  right: -10%;
+  width: 40vw;
+  height: 40vw;
+  background: var(--accent-alt);
+}
+
+/* Base Layout */
+.app-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Navbar */
+.modern-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(17, 24, 39, 0.7);
+  border-bottom: none;
+  padding: 1rem 0;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: linear-gradient(to right, var(--accent-color), var(--accent-alt));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: #7f8d9a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent-alt);
+}
+
+/* Section Wrapper */
+.section-wrapper {
+  padding: 5rem 0;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-margin-top: 5rem;
+  /* for anchor links offset */
+}
+
+/* Hero Desktop left-align shift */
+.hero-content {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  left: -8%;
+}
+
+@media (max-width: 1200px) {
+  .hero-content {
+    left: 0;
+  }
+}
+
+/* Typography */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-alt), #f472b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.title-gradient {
+  background: linear-gradient(135deg, #ffffff, #93c5fd, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 3.5rem;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+}
+
+.highlight {
+  color: var(--accent-alt);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(192, 132, 252, 0.4);
+}
+
+.project-card:hover .project-desc {
+  color: var(--text-primary) !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background: #0d9488;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-alt);
+  color: var(--accent-alt);
+  background: rgba(192, 132, 252, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-icon-only {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.btn-icon-only:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-alt));
+  border-color: transparent;
+  color: white;
+  transform: translateY(-4px) rotate(5deg);
+  box-shadow: 0 10px 20px var(--accent-glow);
+}
+
+/* Hide scrollbar for grid scroll areas if needed */
+.no-scrollbars::-webkit-scrollbar {
+  display: none;
+}
+
+/* Contact Form Elements */
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: rgba(31, 41, 55, 0.6);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--accent-alt);
+  box-shadow: 0 0 10px rgba(192, 132, 252, 0.2);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #d1d5db;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    /* simple mobile hide for now */
+  }
+}
