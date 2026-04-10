@@ -34,63 +34,63 @@ const Contact = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, filter: 'blur(10px)' }}
+      whileInView={{ opacity: 1, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
     >
-      <h2 className="section-title title-gradient">Get In Touch</h2>
-      <p style={{ marginBottom: '3.5rem', color: 'var(--text-secondary)', fontSize: '1.2rem', textAlign: 'center', margin: '0 auto 3.5rem auto', maxWidth: '600px' }}>
+      <h2 className="section-title">Get In Touch</h2>
+      <p style={{ marginBottom: 'var(--space-4xl)', color: 'var(--text-secondary)', fontSize: '1.25rem', textAlign: 'left', fontWeight: 300, maxWidth: '600px', lineHeight: '1.6' }}>
         Ready to start your next project or have questions about my work? Feel free to reach out through any of these channels.
       </p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-2xl)' }}>
 
         {/* Left Side: Contact Info */}
-        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div className="editorial-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
 
             {/* Email */}
-            <a href="mailto:shivchavda11@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}>
-              <div style={{ width: '45px', height: '45px', borderRadius: '50%', background: 'linear-gradient(135deg, #a855f7, #3b82f6)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', flexShrink: 0 }}>
-                <Mail size={22} />
+            <a href="mailto:shivchavda11@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', textDecoration: 'none' }}>
+              <div style={{ width: '45px', height: '45px', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--text-primary)', flexShrink: 0, transition: 'color 0.3s ease' }}>
+                <Mail size={20} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '1.05rem' }}>Email</span>
-                <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>shivchavda11@gmail.com</span>
+                <span style={{ color: 'var(--text-primary)', fontWeight: '400', fontSize: '1.05rem', fontFamily: 'var(--font-display)', fontStyle: 'italic', letterSpacing: '0.02em' }}>Email</span>
+                <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 300 }}>shivchavda11@gmail.com</span>
               </div>
             </a>
 
             {/* Phone */}
-            <a href="tel:+919327900836" style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}>
-              <div style={{ width: '45px', height: '45px', borderRadius: '50%', background: 'linear-gradient(135deg, #a855f7, #3b82f6)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', flexShrink: 0 }}>
-                <Phone size={22} />
+            <a href="tel:+919327900836" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', textDecoration: 'none' }}>
+              <div style={{ width: '45px', height: '45px', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--text-primary)', flexShrink: 0, transition: 'color 0.3s ease' }}>
+                <Phone size={20} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '1.05rem' }}>Phone</span>
-                <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>+91 93279 00836</span>
+                <span style={{ color: 'var(--text-primary)', fontWeight: '400', fontSize: '1.05rem', fontFamily: 'var(--font-display)', fontStyle: 'italic', letterSpacing: '0.02em' }}>Phone</span>
+                <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 300 }}>+91 93279 00836</span>
               </div>
             </a>
 
             {/* GitHub */}
-            <a href="https://github.com/Shiv-Chavda" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}>
-              <div style={{ width: '45px', height: '45px', borderRadius: '50%', background: 'linear-gradient(135deg, #a855f7, #3b82f6)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', flexShrink: 0 }}>
-                <Terminal size={22} />
+            <a href="https://github.com/Shiv-Chavda" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', textDecoration: 'none' }}>
+              <div style={{ width: '45px', height: '45px', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--text-primary)', flexShrink: 0, transition: 'color 0.3s ease' }}>
+                <Terminal size={20} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '1.05rem' }}>GitHub</span>
-                <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>github.com/Shiv-Chavda</span>
+                <span style={{ color: 'var(--text-primary)', fontWeight: '400', fontSize: '1.05rem', fontFamily: 'var(--font-display)', fontStyle: 'italic', letterSpacing: '0.02em' }}>GitHub</span>
+                <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 300 }}>github.com/Shiv-Chavda</span>
               </div>
             </a>
 
             {/* LinkedIn */}
-            <a href="https://linkedin.com/in/shivchavda" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none' }}>
-              <div style={{ width: '45px', height: '45px', borderRadius: '50%', background: 'linear-gradient(135deg, #a855f7, #3b82f6)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', flexShrink: 0 }}>
-                <Briefcase size={22} />
+            <a href="https://linkedin.com/in/shivchavda" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', textDecoration: 'none' }}>
+              <div style={{ width: '45px', height: '45px', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'var(--text-primary)', flexShrink: 0, transition: 'color 0.3s ease' }}>
+                <Briefcase size={20} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '1.05rem' }}>LinkedIn</span>
-                <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>linkedin.com/in/shivchavda</span>
+                <span style={{ color: 'var(--text-primary)', fontWeight: '400', fontSize: '1.05rem', fontFamily: 'var(--font-display)', fontStyle: 'italic', letterSpacing: '0.02em' }}>LinkedIn</span>
+                <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', fontWeight: 300 }}>linkedin.com/in/shivchavda</span>
               </div>
             </a>
 
@@ -98,10 +98,10 @@ const Contact = () => {
         </div>
 
         {/* Right Side: Contact Form */}
-        <div className="glass-card" style={{ display: 'flex', flexDirection: 'column' }}>
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }} onSubmit={handleSubmit}>
+        <div className="editorial-card" style={{ display: 'flex', flexDirection: 'column', border: 'none', padding: '0', background: 'transparent' }}>
+          <form style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)', height: '100%' }} onSubmit={handleSubmit}>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 'var(--space-xl)' }}>
               <div>
                 <label className="form-label">Your Name</label>
                 <input type="text" name="name" required className="form-input" placeholder="John Doe" disabled={status === 'submitting'} />
@@ -117,27 +117,23 @@ const Contact = () => {
               <textarea name="message" required className="form-textarea" style={{ flex: 1, minHeight: '150px', resize: 'vertical' }} placeholder="Tell me about your project..." disabled={status === 'submitting'}></textarea>
             </div>
 
-            <button type="submit" disabled={status === 'submitting'} style={{
-              background: status === 'success' ? '#10b981' : status === 'error' ? '#ef4444' : 'linear-gradient(135deg, #a855f7, #14b8a6)',
-              color: 'white',
-              border: 'none',
+            <button type="submit" className="btn-primary" disabled={status === 'submitting'} style={{
+              background: status === 'success' ? '#10b981' : status === 'error' ? '#ef4444' : 'var(--text-primary)',
+              color: 'var(--bg-color)',
+              border: '1px solid var(--text-primary)',
               padding: '1rem',
-              borderRadius: '8px',
-              fontWeight: 'bold',
-              fontSize: '1rem',
+              fontWeight: 500,
+              fontSize: '0.95rem',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               gap: '0.5rem',
               cursor: status === 'submitting' ? 'not-allowed' : 'pointer',
-              transition: 'transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease',
-              opacity: status === 'submitting' ? 0.7 : 1
-            }}
-              onMouseEnter={(e) => { if (status !== 'submitting') { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(168, 85, 247, 0.4)'; } }}
-              onMouseLeave={(e) => { if (status !== 'submitting') { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'none'; } }}
-            >
+              opacity: status === 'submitting' ? 0.7 : 1,
+              marginTop: 'var(--space-md)'
+            }}>
               {status === 'submitting' ? 'Sending...' : status === 'success' ? 'Message Sent!' : status === 'error' ? 'Error Sending' : 'Send Message'}
-              {status !== 'submitting' && status !== 'success' && status !== 'error' && <Send size={20} />}
+              {status !== 'submitting' && status !== 'success' && status !== 'error' && <Send size={18} />}
             </button>
           </form>
         </div>

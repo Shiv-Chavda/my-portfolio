@@ -10,40 +10,41 @@ const skillsData = {
 const Skills = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, filter: 'blur(10px)' }}
+      whileInView={{ opacity: 1, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
     >
-      <h2 className="section-title title-gradient">Skills</h2>
+      <h2 className="section-title">Skills</h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-2xl)' }}>
         {Object.entries(skillsData).map(([category, skills], idx) => (
           <motion.div
             key={category}
-            className="glass-card"
+            className="editorial-card"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: idx * 0.1 }}
-            style={{ padding: '2rem' }}
+            transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h3 style={{ fontSize: '1.4rem', color: 'white', marginBottom: '1.5rem', textAlign: 'center' }}>{category}</h3>
+            <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', marginBottom: 'var(--space-md)', fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 400 }}>{category}</h3>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-sm)' }}>
               {skills.map(skill => (
                 <motion.div
                   key={skill}
-                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(192, 132, 252, 0.15)', borderColor: 'rgba(192, 132, 252, 0.4)', color: 'white' }}
+                  whileHover={{ borderColor: 'var(--text-primary)', color: 'var(--bg-color)', backgroundColor: 'var(--text-primary)' }}
+                  transition={{ duration: 0.2 }}
                   style={{
-                    fontSize: '0.95rem',
-                    fontWeight: '600',
+                    fontSize: '0.85rem',
+                    fontWeight: '500',
                     color: 'var(--text-secondary)',
-                    padding: '0.5rem 1rem',
-                    background: 'rgba(255,255,255,0.03)',
-                    borderRadius: '8px',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    transition: 'all 0.1s ease',
+                    padding: 'var(--space-xs) var(--space-sm)',
+                    background: 'transparent',
+                    border: '1px solid var(--border-color)',
+                    transition: 'all 0.3s ease',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
                     cursor: 'default'
                   }}
                 >

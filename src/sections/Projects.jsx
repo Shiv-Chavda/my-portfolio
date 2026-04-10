@@ -39,46 +39,46 @@ const projectsData = [
 const Projects = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, filter: 'blur(10px)' }}
+      whileInView={{ opacity: 1, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
     >
-      <h2 className="section-title title-gradient">Projects</h2>
+      <h2 className="section-title">Projects</h2>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
         {projectsData.map((project, idx) => (
           <motion.div
             key={project.id}
-            className="glass-card project-card"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="editorial-card project-card"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ type: 'spring', stiffness: 200, delay: idx * 0.1 }}
-            style={{ display: 'flex', flexDirection: 'column', padding: '2rem' }}
+            transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+            style={{ display: 'flex', flexDirection: 'column', padding: 'var(--space-2xl)' }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
-              <h3 style={{ fontSize: '2rem', color: '#ffffff', fontWeight: 'bold', margin: '0' }}>{project.title}</h3>
-              <div style={{ display: 'flex', gap: '1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
+              <h3 style={{ fontSize: '2rem', color: 'var(--text-primary)', fontWeight: '400', margin: '0', fontFamily: 'var(--font-display)', fontStyle: 'italic' }}>{project.title}</h3>
+              <div style={{ display: 'flex', gap: 'var(--space-sm)' }}>
                 <a href={project.github} target="_blank" rel="noreferrer" className="btn-icon-only" title="Source Code">
                   <Terminal size={20} />
                 </a>
                 {project.live !== '#' && (
-                  <a href={project.live} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.5rem 1rem' }} title="Live Site">
-                    <ExternalLink size={20} />
+                  <a href={project.live} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem' }} title="Live Site">
+                    <ExternalLink size={18} style={{ marginRight: '0.2rem' }} />
                     View Live
                   </a>
                 )}
               </div>
             </div>
 
-            <p className="project-desc" style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.1rem', lineHeight: '1.7', transition: 'color 0.3s ease' }}>
+            <p className="project-desc" style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-xl)', fontSize: '1.1rem', lineHeight: '1.7', fontWeight: 300, transition: 'color 0.4s ease' }}>
               {project.desc}
             </p>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-xs)' }}>
               {project.tech.map(t => (
-                <span key={t} style={{ fontSize: '0.8rem', fontWeight: '600', padding: '0.3rem 0.8rem', background: 'rgba(192, 132, 252, 0.1)', color: 'var(--accent-alt)', borderRadius: '20px', border: '1px solid rgba(192, 132, 252, 0.2)' }}>
+                <span key={t} style={{ fontSize: '0.75rem', fontWeight: '500', padding: '0.2rem 0.6rem', background: 'transparent', color: 'var(--text-secondary)', border: '1px solid var(--border-color)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   {t}
                 </span>
               ))}
