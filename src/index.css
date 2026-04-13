@@ -131,6 +131,77 @@ h6 {
   z-index: 10;
 }
 
+/* ── Hamburger Menu Button ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-xs);
+  z-index: 60;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Mobile Drawer ── */
+.mobile-nav-drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  background: var(--bg-color);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl);
+  border-bottom: 1px solid var(--border-color);
+  animation: drawerFadeIn 0.25s ease;
+}
+
+.mobile-nav-drawer.open {
+  display: flex;
+}
+
+.mobile-nav-drawer .nav-link {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+}
+
+@keyframes drawerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Navbar */
 .modern-nav {
   position: sticky;
@@ -332,8 +403,57 @@ h6 {
   letter-spacing: 0.05em;
 }
 
+/* ════════════════════════════════════════════
+   MOBILE RESPONSIVE  (≤ 768px)
+   ════════════════════════════════════════════ */
 @media (max-width: 768px) {
+
+  /* Nav */
   .nav-links {
     display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-container {
+    padding: 0 var(--space-lg);
+  }
+
+  /* Container */
+  .app-container {
+    padding: 0 var(--space-lg);
+  }
+
+  /* Section wrapper */
+  .section-wrapper {
+    padding: var(--space-3xl) 0;
+    min-height: unset;
+  }
+
+  /* Section title */
+  .section-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: var(--space-2xl);
+  }
+
+  /* Editorial cards */
+  .editorial-card,
+  .glass-card {
+    padding: var(--space-lg);
+  }
+}
+
+/* ════════════════════════════════════════════
+   SMALL MOBILE  (≤ 480px)
+   ════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 0 var(--space-md);
+  }
+
+  .nav-container {
+    padding: 0 var(--space-md);
   }
 }

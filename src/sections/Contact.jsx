@@ -44,7 +44,7 @@ const Contact = () => {
         Ready to start your next project or have questions about my work? Feel free to reach out through any of these channels.
       </p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-2xl)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: 'var(--space-2xl)' }}>
 
         {/* Left Side: Contact Info */}
         <div className="editorial-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>

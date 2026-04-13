@@ -12,11 +12,11 @@ import EasterEggs from './components/EasterEggs';
 function App() {
   const { scrollYProgress } = useScroll();
 
-  // Hero section animation: scale down and fade out as user scrolls
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
   const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 50]);
   const [isSantoryu, setIsSantoryu] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSantoryu = () => {
     setIsSantoryu(true);
@@ -25,11 +25,18 @@ function App() {
   };
 
   const scrollTo = (id) => {
+    setMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   return (
     <>
@@ -42,15 +49,20 @@ function App() {
         </div>
       )}
 
-      {/* Ambient blobs removed via CSS for stark look */}
       <div className="ambient-blob blob-1"></div>
       <div className="ambient-blob blob-2"></div>
 
       <nav className="modern-nav">
         <div className="nav-container">
-          <a onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="nav-logo" style={{ cursor: 'pointer' }}>
+          <a
+            onClick={() => { setMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            className="nav-logo"
+            style={{ cursor: 'pointer' }}
+          >
             Shiv
           </a>
+
+          {/* Desktop nav links */}
           <div className="nav-links">
             <a onClick={() => scrollTo('about')} className="nav-link">About</a>
             <a onClick={() => scrollTo('experience')} className="nav-link">Experience</a>
@@ -58,20 +70,59 @@ function App() {
             <a onClick={() => scrollTo('skills')} className="nav-link">Skills</a>
             <a onClick={() => scrollTo('contact')} className="nav-link">Contact</a>
           </div>
+
+          {/* Hamburger button — mobile only */}
+          <button
+            className={`nav-hamburger${menuOpen ? ' open' : ''}`}
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="Toggle navigation menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
       </nav>
 
+      {/* Mobile full-screen drawer */}
+      <div className={`mobile-nav-drawer${menuOpen ? ' open' : ''}`}>
+        <a onClick={() => scrollTo('about')} className="nav-link">About</a>
+        <a onClick={() => scrollTo('experience')} className="nav-link">Experience</a>
+        <a onClick={() => scrollTo('projects')} className="nav-link">Projects</a>
+        <a onClick={() => scrollTo('skills')} className="nav-link">Skills</a>
+        <a onClick={() => scrollTo('contact')} className="nav-link">Contact</a>
+      </div>
+
       <div className="app-container">
-        {/* Landing/Hero Section */}
+
+        {/* ── Hero ── */}
         <motion.div
           className="hero-content"
-          style={{ opacity: heroOpacity, scale: heroScale, y: heroY, display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '90vh', gap: 'var(--space-3xl)' }}
+          style={{
+            opacity: heroOpacity,
+            scale: heroScale,
+            y: heroY,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            minHeight: '90svh',
+            gap: 'var(--space-3xl)',
+          }}
         >
           <motion.h1
             initial={{ opacity: 0, filter: 'blur(10px)' }}
             animate={{ opacity: 1, filter: 'blur(0px)' }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontSize: 'clamp(4rem, 12vw, 10rem)', fontWeight: '400', margin: 0, lineHeight: '0.85', letterSpacing: '-0.05em', fontFamily: 'var(--font-display)', display: 'flex', flexDirection: 'column' }}
+            style={{
+              fontSize: 'clamp(3.2rem, 15vw, 10rem)',
+              fontWeight: '400',
+              margin: 0,
+              lineHeight: '0.85',
+              letterSpacing: '-0.05em',
+              fontFamily: 'var(--font-display)',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
           >
             {isSantoryu ? (
               <span className="zoro-shout" style={{ fontSize: '1.2em', position: 'relative', display: 'inline-block' }}>
@@ -88,7 +139,7 @@ function App() {
                     fontSize: '1rem',
                     color: 'rgba(34, 197, 94, 0.6)',
                     fontWeight: 800,
-                    letterSpacing: '0.2em'
+                    letterSpacing: '0.2em',
                   }}
                 >
                   NOTHING HAPPENED.
@@ -98,7 +149,7 @@ function App() {
               <>
                 <span style={{ overflow: 'hidden', display: 'inline-flex' }}>
                   <motion.span
-                    initial={{ y: "100%" }}
+                    initial={{ y: '100%' }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                     style={{ color: 'var(--text-primary)', marginLeft: '-0.05em', display: 'inline-block' }}
@@ -106,9 +157,10 @@ function App() {
                     Shiv
                   </motion.span>
                 </span>
-                <span style={{ overflow: 'hidden', display: 'inline-flex', paddingLeft: 'clamp(2rem, 15vw, 12rem)' }}>
+                {/* clamp keeps "Chavda" from overflowing on small screens */}
+                <span style={{ overflow: 'hidden', display: 'inline-flex', paddingLeft: 'clamp(1rem, 10vw, 12rem)' }}>
                   <motion.span
-                    initial={{ y: "100%" }}
+                    initial={{ y: '100%' }}
                     animate={{ y: 0 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
                     className="accent-text"
@@ -121,14 +173,22 @@ function App() {
             )}
           </motion.h1>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-2xl)', marginTop: 'var(--space-2xl)', borderTop: '1px solid var(--border-color)', paddingTop: 'var(--space-xl)', marginLeft: 'clamp(0px, 10vw, 200px)' }}>
+          {/* Hero sub-row: bio + links */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
+            gap: 'var(--space-2xl)',
+            marginTop: 'var(--space-2xl)',
+            borderTop: '1px solid var(--border-color)',
+            paddingTop: 'var(--space-xl)',
+          }}>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-              style={{ fontSize: '1.2rem', color: 'var(--text-primary)', opacity: 0.9, fontWeight: 300, lineHeight: '1.6', margin: 0 }}
+              style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', color: 'var(--text-primary)', opacity: 0.9, fontWeight: 300, lineHeight: '1.6', margin: 0 }}
             >
-              Software Engineer & Full Stack Developer.<br /><br />
+              Software Engineer &amp; Full Stack Developer.<br /><br />
               A passionate developer specializing in cross-platform mobile architectures, robust backend systems, and crafting unapologetically fast digital experiences.
             </motion.p>
 
@@ -141,14 +201,32 @@ function App() {
               <div>
                 <span style={{ display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-primary)', opacity: 0.8, marginBottom: 'var(--space-xs)' }}>Connect</span>
                 <div style={{ display: 'flex', gap: 'var(--space-xl)', flexWrap: 'wrap' }}>
-                  <a href="https://github.com/Shiv-Chavda" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--text-primary)', borderBottom: '1px solid transparent', transition: 'border-color 0.3s', fontSize: '0.95rem' }} onMouseEnter={e => e.target.style.borderBottomColor = 'var(--text-primary)'} onMouseLeave={e => e.target.style.borderBottomColor = 'transparent'}>GitHub</a>
-                  <a href="https://linkedin.com/in/shivchavda" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'var(--text-primary)', borderBottom: '1px solid transparent', transition: 'border-color 0.3s', fontSize: '0.95rem' }} onMouseEnter={e => e.target.style.borderBottomColor = 'var(--text-primary)'} onMouseLeave={e => e.target.style.borderBottomColor = 'transparent'}>LinkedIn</a>
+                  <a
+                    href="https://github.com/Shiv-Chavda"
+                    target="_blank" rel="noreferrer"
+                    style={{ textDecoration: 'none', color: 'var(--text-primary)', borderBottom: '1px solid transparent', transition: 'border-color 0.3s', fontSize: '0.95rem' }}
+                    onMouseEnter={e => e.target.style.borderBottomColor = 'var(--text-primary)'}
+                    onMouseLeave={e => e.target.style.borderBottomColor = 'transparent'}
+                  >GitHub</a>
+                  <a
+                    href="https://linkedin.com/in/shivchavda"
+                    target="_blank" rel="noreferrer"
+                    style={{ textDecoration: 'none', color: 'var(--text-primary)', borderBottom: '1px solid transparent', transition: 'border-color 0.3s', fontSize: '0.95rem' }}
+                    onMouseEnter={e => e.target.style.borderBottomColor = 'var(--text-primary)'}
+                    onMouseLeave={e => e.target.style.borderBottomColor = 'transparent'}
+                  >LinkedIn</a>
                 </div>
               </div>
 
               <div>
                 <span style={{ display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-primary)', opacity: 0.8, marginBottom: 'var(--space-xs)' }}>Detailed Profile</span>
-                <a href="https://drive.google.com/file/d/1ua3OzQmDwjd66l5jaCZpvQEajZV9TuFH/view?usp=sharing" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: 'var(--accent-color)', borderBottom: '1px solid transparent', transition: 'border-color 0.3s', fontSize: '0.95rem' }} onMouseEnter={e => e.target.style.borderBottomColor = 'var(--accent-color)'} onMouseLeave={e => e.target.style.borderBottomColor = 'transparent'}>
+                <a
+                  href="https://drive.google.com/file/d/1ua3OzQmDwjd66l5jaCZpvQEajZV9TuFH/view?usp=sharing"
+                  target="_blank" rel="noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: 'var(--accent-color)', borderBottom: '1px solid transparent', transition: 'border-color 0.3s', fontSize: '0.95rem' }}
+                  onMouseEnter={e => e.target.style.borderBottomColor = 'var(--accent-color)'}
+                  onMouseLeave={e => e.target.style.borderBottomColor = 'transparent'}
+                >
                   Resume <span style={{ fontFamily: 'sans-serif' }}>→</span>
                 </a>
               </div>
@@ -165,7 +243,9 @@ function App() {
         </main>
 
         <footer style={{ padding: 'var(--space-3xl) 0', textAlign: 'center', color: 'var(--text-secondary)', borderTop: '1px solid var(--border-color)', marginTop: 'var(--space-4xl)' }}>
-          <p style={{ fontSize: '0.9rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>© {new Date().getFullYear()} <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Shiv Chavda</strong>. All rights reserved.</p>
+          <p style={{ fontSize: '0.9rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            © {new Date().getFullYear()} <strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>Shiv Chavda</strong>. All rights reserved.
+          </p>
         </footer>
       </div>
     </>
