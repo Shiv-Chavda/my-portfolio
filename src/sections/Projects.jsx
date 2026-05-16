@@ -12,6 +12,14 @@ const projectsData = [
   },
   {
     id: 2,
+    title: 'YtMate – AI-Powered Video Chat Platform',
+    tech: ['React', 'FastAPI', 'LangChain', 'ChromaDB', 'RAG'],
+    desc: 'Developed a full-stack, AI-powered chat application enabling users to query YouTube video content in natural language, leveraging a Retrieval-Augmented Generation (RAG) pipeline to provide context-aware answers. Engineered a robust backend service with FastAPI to handle video transcript processing, semantic text chunking, and vector embedding storage in ChromaDB for efficient similarity search. Integrated Google’s Gemini LLM with a LangChain-orchestrated pipeline to generate accurate, hallucination-free responses based on retrieved video context, improving information retrieval speed by over 90% compared to manual viewing.',
+    github: 'https://github.com/Shiv-Chavda/YtMate',
+    live: 'https://ytmate-ai.vercel.app'
+  },
+  {
+    id: 3,
     title: 'DoodleIt',
     tech: ['Flutter', 'Node.js', 'Socket.IO', 'MongoDB'],
     desc: 'Engineered a real-time distributed multiplayer system in Flutter and Node.js using WebSockets for 8+ concurrent players. Configured custom rooms, dynamic leaderboards, and JWT-based authentication. Optimized data flows, reducing server response latency by 40%.',
@@ -19,7 +27,7 @@ const projectsData = [
     live: '#'
   },
   {
-    id: 3,
+    id: 4,
     title: 'Jarvis',
     tech: ['Flutter', 'DeepSeek', 'Gemini', 'TTS/STT', 'Firebase'],
     desc: 'A modular AI-driven virtual assistant integrating speech recognition, text processing, and LLM APIs for sub-second responses. Enabled multimodal inputs (voice, text, image-generation) hitting 90% speech recognition accuracy. Optimized UI reducing interaction latency by 25%.',
@@ -27,7 +35,7 @@ const projectsData = [
     live: '#'
   },
   {
-    id: 4,
+    id: 5,
     title: 'Movie Recommendation System',
     tech: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Jupyter Notebook', 'Collaborative Filtering'],
     desc: 'Built an intelligent movie recommendation engine using collaborative filtering techniques in Python. Trained and serialized a machine learning model (model.pkl) on a curated dataset to generate personalized suggestions. Leveraged Pandas and NumPy for efficient data preprocessing and feature engineering pipelines.',
