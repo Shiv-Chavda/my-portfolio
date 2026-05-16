@@ -19,7 +19,7 @@ const Experience = () => {
               <p style={{ color: 'var(--text-secondary)', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.85rem', marginTop: 'var(--space-xs)' }}>Debound • Remote</p>
             </div>
             <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', padding: 'var(--space-xs) var(--space-sm)', background: 'transparent', border: '1px solid var(--border-color)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              Dec 2025 – Present
+              Dec 2025 – Apr 2026
             </span>
           </div>
           <ul style={{ paddingLeft: '1.5rem', color: 'var(--text-secondary)', display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)', fontSize: '1.05rem', fontWeight: 300, lineHeight: 1.7 }}>

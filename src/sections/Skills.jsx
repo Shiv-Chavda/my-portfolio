@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const skillsData = {
-  "Languages": ["C++", "Dart", "JavaScript / TypeScript", "Python", "SQL", "Go"],
-  "Frameworks": ["Flutter", "Node.js (Express, NestJS)", "React", "Next.js", "FastAPI"],
-  "Databases": ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Neo4j", "Qdrant"],
-  "Tools/Others": ["Git/GitHub", "Docker", "Socket.io / WebSockets", "Postman", "Linux", "REST APIs", "RAG"]
+  "Languages": ["C", "C++", "Dart", "JavaScript / TypeScript", "Python", "SQL", "HTML / CSS"],
+  "Frameworks": ["Flutter", "Node.js", "Express.js", "React", "FastAPI"],
+  "Databases": ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Supabase", "Neo4j", "PostGIS", "Qdrant"],
+  "Tools/Others": ["Git/GitHub", "Docker", "Socket.io / WebSockets", "Postman", "Apidog", "Linux", "REST APIs", "RAG", "Prometheus", "Grafana", "Slack", "Jira"]
 };
 
 const Skills = () => {

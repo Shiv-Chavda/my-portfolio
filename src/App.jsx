@@ -221,7 +221,7 @@ function App() {
               <div>
                 <span style={{ display: 'block', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-primary)', opacity: 0.8, marginBottom: 'var(--space-xs)' }}>Detailed Profile</span>
                 <a
-                  href="https://drive.google.com/file/d/1CAf_FhdIqaxJdPF7PEhxxslq0OU6uDaf/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1WAcOfxvWUs_0BnS8Rdk575KxqzjpkwN6/view?usp=sharing"
                   target="_blank" rel="noreferrer"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: 'var(--accent-color)', borderBottom: '1px solid transparent', transition: 'border-color 0.3s', fontSize: '0.95rem' }}
                   onMouseEnter={e => e.target.style.borderBottomColor = 'var(--accent-color)'}
